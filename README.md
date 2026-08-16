@@ -1,16 +1,54 @@
-# React + Vite
+# 🧠 NeuroFed — Privacy-Preserving Brain Tumor Detection
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Radiomics + Fuzzy Clustering + Federated Learning**, evaluated on BraTS2020.
 
-Currently, two official plugins are available:
+A final-year major project combining privacy-preserving federated learning with radiomics-based feature extraction and fuzzy clustering, applied to two clinically relevant tasks: tumor grade classification (HGG/LGG) and survival risk prediction, alongside an unsupervised tumor detection/segmentation module.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🔗 **Live dashboard:** https://shreeyabbb-cloud.github.io/brain-tumor-major/
+🔗 **Interactive demo (FCM segmentation):** https://huggingface.co/spaces/SB-04/brain-tumor-fl-privacy
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key Results
 
-## Expanding the Oxlint configuration
+| Task | Result | Method |
+|------|--------|--------|
+| HGG/LGG Grade Classification | **~91% Accuracy** | RF + SMOTE, Federated (6-seed mean) |
+| Tumor Segmentation | **~0.77 Dice** (FLAIR, cleaned) | Fuzzy C-Means, unsupervised, ground-truth-free |
+| Survival Risk Prediction | **~48% Accuracy** | 3-class, federated (literature range: 35–60%) |
+| Privacy Cost | **~0** | Federated accuracy matches centralized, no significant difference (paired t-test) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+All literature comparisons in this project are centralized baselines (full data access, no privacy constraint). This project's results are **federated** throughout — patient data is never pooled.
+
+## Pipeline Overview
+
+1. **Radiomics feature extraction** — first-order, shape, and GLCM texture features from 3D tumor volumes across 4 MRI modalities (T1, T1ce, T2, FLAIR)
+2. **Fuzzy C-Means clustering** — used two ways: (a) simulating non-IID federated clients by grouping patients with similar radiomic profiles, (b) direct pixel-intensity clustering for unsupervised tumor segmentation
+3. **Federated Learning** — FedAvg via Flower, comparing centralized vs. federated performance on identical held-out test sets
+4. **Classification** — Random Forest + SMOTE (best-performing model after comparison against MLP, SVM, and PCA-reduced variants)
+
+## Additional Experiments
+
+Beyond the core pipeline, this project includes a full ablation and comparison suite: SMOTE augmentation, model comparison (MLP/RF/SVM, with/without PCA), multi-modal segmentation (FLAIR+T1ce), a U-Net reference baseline (centralized, for context), differential privacy (DP-FedAvg, accuracy-vs-privacy tradeoff), and statistical significance testing across seeds. See the project notebook for full details.
+
+## Tech Stack
+
+- **Frontend:** React + Vite, deployed via GitHub Actions to GitHub Pages
+- **ML Pipeline:** Python — PyTorch, scikit-learn, scikit-fuzzy, Flower (federated learning), nibabel, scikit-image
+- **Interactive demo:** Gradio, hosted on Hugging Face Spaces
+
+## Local Development
+
+```bash
+npm install
+npm run dev      # local dev server
+npm run build     # production build to dist/
+```
+
+## Disclaimer
+
+Academic research prototype. Not intended for clinical diagnosis or treatment decisions. Evaluated on the BraTS2020 dataset; segmentation and predictions are not validated for real-world clinical use.
+
+---
+
+*Final Year Major Project — Computer Science & Engineering, 2026*

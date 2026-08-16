@@ -1,0 +1,240 @@
+.results-page {
+  padding-bottom: 3rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.text-secondary {
+  color: var(--text-secondary, #64748B);
+}
+
+.text-primary {
+  color: var(--primary, #0891B2);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+/* Hero Stat Card */
+.hero-stat-card {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.05) 0%, rgba(8, 145, 178, 0.1) 100%);
+  border: 1px solid rgba(8, 145, 178, 0.2);
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.hero-stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hero-stat-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text, #1E293B);
+}
+
+.hero-stat-value {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--primary, #0891B2);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hero-stat-note {
+  color: var(--text-secondary, #64748B);
+  font-size: 1rem;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background-color: rgba(8, 145, 178, 0.1);
+  color: var(--primary-dark, #0E7490);
+}
+
+.badge-secondary {
+  background-color: var(--border, #E2E8F0);
+  color: var(--text-secondary, #64748B);
+}
+
+/* Chart and Stat Cards */
+.stat-cards-grid {
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text, #1E293B);
+}
+
+.stat-label {
+  color: var(--text-secondary, #64748B);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-note {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #64748B);
+  font-style: italic;
+  display: block;
+}
+
+/* Progress Bars */
+.dice-score-overview {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dice-score-label {
+  font-weight: 500;
+  color: var(--text-secondary, #64748B);
+}
+
+.dice-score-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary, #0891B2);
+}
+
+.progress-item {
+  margin-bottom: 1rem;
+}
+
+.progress-label-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text, #1E293B);
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border, #E2E8F0);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary, #0891B2);
+  border-radius: 9999px;
+}
+
+/* Layout Utilities */
+.card-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* Placeholder Box */
+.placeholder-box {
+  background-color: rgba(226, 232, 240, 0.3);
+  border: 2px dashed var(--border, #E2E8F0);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+}
+
+.comparison-placeholder {
+  min-height: 250px;
+}
+
+/* Confusion Matrix */
+.confusion-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.cm-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.header-cell {
+  font-weight: 500;
+  color: var(--text-secondary, #64748B);
+}
+
+.value-cell {
+  background-color: rgba(8, 145, 178, 0.1);
+}
+
+.high-val {
+  background-color: rgba(8, 145, 178, 0.8);
+}
+
+.med-val {
+  background-color: rgba(8, 145, 178, 0.5);
+}
+
+.low-val {
+  background-color: rgba(8, 145, 178, 0.1);
+}
+
+/* Privacy Summary */
+.privacy-utility-card {
+  background-color: var(--surface, #FFFFFF);
+  border-left: 4px solid var(--primary, #0891B2);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.privacy-utility-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
